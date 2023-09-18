@@ -8,5 +8,5 @@ from openupgradelib import openupgrade  # pylint: disable=W7936
 def migrate(env, version):
     # Pre-create column for avoiding to trigger the compute
     openupgrade.logged_query(
-        env.cr, "ALTER TABLE account_move ADD payment_mode_id int4"
+        env.cr, "ALTER TABLE account_move ADD IF NOT EXISTS payment_mode_id int4"
     )
